@@ -1,0 +1,48 @@
+version: "3"
+services:
+  frontend:
+    build:
+      context: /Users/sachamorez/Documents/Epitech/PreMsc/T-YEP/frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - /Users/sachamorez/Documents/Epitech/PreMsc/T-YEP/frontend:/app
+      - /app/node_modules
+
+  auth-service:
+    build:
+      context: /Users/sachamorez/Documents/Epitech/PreMsc/T-YEP/auth-service
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3001"
+    env_file:
+      - /Users/sachamorez/Documents/Epitech/PreMsc/T-YEP/auth-service/.env
+    restart: unless-stopped
+  calendar-service:
+    build:
+      context: /Users/sachamorez/Documents/Epitech/PreMsc/T-YEP/calendar-service
+      dockerfile: Dockerfile
+    ports:
+      - "3002:3002"
+    env_file:
+      - /Users/sachamorez/Documents/Epitech/PreMsc/T-YEP/calendar-service/.env
+    restart: unless-stopped
+  project-service:
+    build:
+      context: /Users/sachamorez/Documents/Epitech/PreMsc/T-YEP/project-service
+      dockerfile: Dockerfile
+    ports:
+      - "3003:3003"
+    env_file:
+      - /Users/sachamorez/Documents/Epitech/PreMsc/T-YEP/project-service/.env
+    restart: unless-stopped
+  profile-service:
+    build:
+      context: /Users/sachamorez/Documents/Epitech/PreMsc/T-YEP/profile-service
+      dockerfile: Dockerfile
+    ports:
+      - "3004:3004"
+    env_file:
+      - /Users/sachamorez/Documents/Epitech/PreMsc/T-YEP/profile-service/.env
+    restart: unless-stopped
